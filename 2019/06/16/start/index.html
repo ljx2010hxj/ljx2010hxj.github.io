@@ -33,6 +33,18 @@
       background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
   </style>
+  <style>
+    .custom_img{
+        margin: 20px auto;
+    }
+    .custom_img img{
+                 box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+                 /*考虑浏览器兼容性*/
+                 -moz-box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+                 -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+                 border-radius: 8px;
+    }
+  </style>
   
 
   
@@ -398,15 +410,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nida</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">逛吃</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">逛吃逛吃</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">nida</a>
               </li>
             
             <div class="clearfix"></div>
