@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.ljx2010hxj.cn">
-  <title>Archives: 2019/6 | CNK</title>
+  <title>Android--Statusbar的显示与隐藏 | CNK</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="无为大叔，努力有为。">
-<meta name="keywords" content="android, 移动端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CNK">
-<meta property="og:url" content="https://www.ljx2010hxj.cn/archives/2019/06/index.html">
+  <meta name="description" content="2019/7/8 14:32:21  Statusbar的显示与隐藏过程比较复杂，特别是一些flag的更新与设置。这里将SystemUI与framework的交互过程做了一个大概的介绍。">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android--Statusbar的显示与隐藏">
+<meta property="og:url" content="https://www.ljx2010hxj.cn/2019/07/08/Android/Android--Statusbar-Show-Hide/index.html">
 <meta property="og:site_name" content="CNK">
-<meta property="og:description" content="无为大叔，努力有为。">
+<meta property="og:description" content="2019/7/8 14:32:21  Statusbar的显示与隐藏过程比较复杂，特别是一些flag的更新与设置。这里将SystemUI与framework的交互过程做了一个大概的介绍。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-08T11:26:22.958Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CNK">
-<meta name="twitter:description" content="无为大叔，努力有为。">
+<meta name="twitter:title" content="Android--Statusbar的显示与隐藏">
+<meta name="twitter:description" content="2019/7/8 14:32:21  Statusbar的显示与隐藏过程比较复杂，特别是一些flag的更新与设置。这里将SystemUI与framework的交互过程做了一个大概的介绍。">
   
     <link rel="alternative" href="/atom.xml" title="CNK" type="application/atom+xml">
   
@@ -160,60 +161,312 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Android/Android--Statusbar-Show-Hide" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/16/start/" class="archive-article-date">
-  	<time datetime="2019-06-16T08:32:06.664Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/16/start/">新的起点</a>
+    <h1 class="article-title" itemprop="name">
+      Android--Statusbar的显示与隐藏
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/07/08/Android/Android--Statusbar-Show-Hide/" class="archive-article-date">
+  	<time datetime="2019-07-08T06:32:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2019/7/8 14:32:21 </p>
+<p>Statusbar的显示与隐藏过程比较复杂，特别是一些flag的更新与设置。这里将SystemUI与framework的交互过程做了一个大概的介绍。</p>
+<a id="more"></a>
+
+<p>StatusBar的添加</p>
+<blockquote>
+<p>framework\base\packages\SystemUI\src\com\android\systemui\statusbar\phone\PhoneStatusBar.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createAndAddWindows</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    addStatusBarWindow();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当我们手指从上往下滑动的时候</p>
+<blockquote>
+<p>framework\base\services\core\java\com\android\server\policy\PhoneWindowManager.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">WindowState mStatusBar = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// monitor for system gestures</span></span><br><span class="line">mSystemGestures = <span class="keyword">new</span> SystemGesturesPointerEventListener(context,</span><br><span class="line">        <span class="keyword">new</span> SystemGesturesPointerEventListener.Callbacks() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSwipeFromTop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (mStatusBar != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    requestTransientBars(mStatusBar);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+
+<p>先来看看此处的<code>mStatusBar</code>是如何初始化的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">prepareAddWindowLw</span><span class="params">(WindowState win, WindowManager.LayoutParams attrs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (attrs.type) &#123;</span><br><span class="line">        <span class="keyword">case</span> TYPE_STATUS_BAR:</span><br><span class="line">            mContext.enforceCallingOrSelfPermission(</span><br><span class="line">                    android.Manifest.permission.STATUS_BAR_SERVICE,</span><br><span class="line">                    <span class="string">"PhoneWindowManager"</span>);</span><br><span class="line">            <span class="keyword">if</span> (mStatusBar != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (mStatusBar.isAlive()) &#123;</span><br><span class="line">                    <span class="keyword">return</span> WindowManagerGlobal.ADD_MULTIPLE_SINGLETON;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            mStatusBar = win;</span><br><span class="line">            mStatusBarController.setWindow(win);</span><br><span class="line">            <span class="keyword">break</span>;</span><br></pre></td></tr></table></figure>
+
+<p>通过调用函数<code>prepareAddWindowLw</code>来初始化<code>mStatusBar</code>。</p>
+<p>此函数定义在interface里面</p>
+<blockquote>
+<p>framework\base\core\java\android\view\WindowManagerPolicy.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Prepare for a window being added to the window manager.  You can throw an</span></span><br><span class="line"><span class="comment"> * exception here to prevent the window being added, or do whatever setup</span></span><br><span class="line"><span class="comment"> * you need to keep track of the window.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> win The window being added.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> attrs The window's LayoutParams.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="doctag">@link</span> WindowManagerGlobal#ADD_OKAY&#125; if the add can proceed, else an</span></span><br><span class="line"><span class="comment"> *         error code to abort the add.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">prepareAddWindowLw</span><span class="params">(WindowState win,</span></span></span><br><span class="line"><span class="function"><span class="params">        WindowManager.LayoutParams attrs)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>当然<code>PhoneWindowManager.java</code>实现了这个接口。</p>
+<p>这个函数是在哪里调用的呢？</p>
+<blockquote>
+<p>framework\base\services\core\java\com\android\server\wm\WindowManagerService.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> WindowManagerPolicy mPolicy = <span class="keyword">new</span> PhoneWindowManager();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">addWindow</span><span class="params">(Session session, IWindow client, <span class="keyword">int</span> seq,</span></span></span><br><span class="line"><span class="function"><span class="params">        WindowManager.LayoutParams attrs, <span class="keyword">int</span> viewVisibility, <span class="keyword">int</span> displayId,</span></span></span><br><span class="line"><span class="function"><span class="params">        Rect outContentInsets, Rect outStableInsets, Rect outOutsets,</span></span></span><br><span class="line"><span class="function"><span class="params">        InputChannel outInputChannel)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] appOp = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> res = mPolicy.checkAddPermission(attrs, appOp);</span><br><span class="line">    <span class="keyword">if</span> (res != WindowManagerGlobal.ADD_OKAY) &#123;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    res = mPolicy.prepareAddWindowLw(win, attrs);</span><br><span class="line">    <span class="keyword">if</span> (res != WindowManagerGlobal.ADD_OKAY) &#123;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>此处的<code>mPolicy</code>就是<code>PhoneWindowManager</code>实例。 而<code>addWindow</code>是在</p>
+<blockquote>
+<p>framework\base\services\core\java\com\android\server\wm\Session.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">addToDisplay</span><span class="params">(IWindow window, <span class="keyword">int</span> seq, WindowManager.LayoutParams attrs,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">int</span> viewVisibility, <span class="keyword">int</span> displayId, Rect outContentInsets, Rect outStableInsets,</span></span></span><br><span class="line"><span class="function"><span class="params">        Rect outOutsets, InputChannel outInputChannel)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mService.addWindow(<span class="keyword">this</span>, window, seq, attrs, viewVisibility, displayId,</span><br><span class="line">            outContentInsets, outStableInsets, outOutsets, outInputChannel);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>Session.java</code>里面调用。扯的有点远了，我们还是回头去看看，当手指在全屏的时候从屏幕上面往下滑动的处理。</p>
+<blockquote>
+<p>framework\base\services\core\java\com\android\server\policy\PhoneWindowManager.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> StatusBarController mStatusBarController = <span class="keyword">new</span> StatusBarController();</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> BarController mNavigationBarController = <span class="keyword">new</span> BarController(<span class="string">"NavigationBar"</span>,</span><br><span class="line">        View.NAVIGATION_BAR_TRANSIENT,</span><br><span class="line">        View.NAVIGATION_BAR_UNHIDE,</span><br><span class="line">        View.NAVIGATION_BAR_TRANSLUCENT,</span><br><span class="line">        StatusBarManager.WINDOW_NAVIGATION_BAR,</span><br><span class="line">        WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,</span><br><span class="line">        View.NAVIGATION_BAR_TRANSPARENT);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">requestTransientBars</span><span class="params">(WindowState swipeTarget)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (mWindowManagerFuncs.getWindowManagerLock()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!isUserSetupComplete()) &#123;</span><br><span class="line">            <span class="comment">// Swipe-up for navigation bar is disabled during setup</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">boolean</span> sb = mStatusBarController.checkShowTransientBarLw();</span><br><span class="line">        <span class="keyword">boolean</span> nb = mNavigationBarController.checkShowTransientBarLw()</span><br><span class="line">                &amp;&amp; !isNavBarEmpty(mLastSystemUiFlags);</span><br><span class="line">        <span class="keyword">if</span> (sb || nb) &#123;</span><br><span class="line">            <span class="comment">// Don't show status bar when swiping on already visible navigation bar</span></span><br><span class="line">            <span class="keyword">if</span> (!nb &amp;&amp; swipeTarget == mNavigationBar) &#123;</span><br><span class="line">                <span class="keyword">if</span> (DEBUG) Slog.d(TAG, <span class="string">"Not showing transient bar, wrong swipe target"</span>);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (sb) mStatusBarController.showTransient();</span><br><span class="line">            <span class="keyword">if</span> (nb) mNavigationBarController.showTransient();</span><br><span class="line">            mImmersiveModeConfirmation.confirmCurrentPrompt();</span><br><span class="line">            updateSystemUiVisibilityLw();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>StatusBarController</code>是<code>BarController</code>的子类。看看<code>checkShowTransientBarLw</code>方法。</p>
+<blockquote>
+<p>framework\base\services\core\java\com\android\server\policy\BarController.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkShowTransientBarLw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mTransientBarState == TRANSIENT_BAR_SHOWING) &#123;</span><br><span class="line">        <span class="keyword">if</span> (DEBUG) Slog.d(mTag, <span class="string">"Not showing transient bar, already shown"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mTransientBarState == TRANSIENT_BAR_SHOW_REQUESTED) &#123;</span><br><span class="line">        <span class="keyword">if</span> (DEBUG) Slog.d(mTag, <span class="string">"Not showing transient bar, already requested"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mWin == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (DEBUG) Slog.d(mTag, <span class="string">"Not showing transient bar, bar doesn't exist"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mWin.isDisplayedLw()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (DEBUG) Slog.d(mTag, <span class="string">"Not showing transient bar, bar already visible"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果返回true，说明对应的bar并没有显示，需要后面将其显示。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showTransient</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mWin != <span class="keyword">null</span>) &#123;</span><br><span class="line">        setTransientBarState(TRANSIENT_BAR_SHOW_REQUESTED);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setTransientBarState</span><span class="params">(<span class="keyword">int</span> state)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mWin != <span class="keyword">null</span> &amp;&amp; state != mTransientBarState) &#123;</span><br><span class="line">        <span class="keyword">if</span> (mTransientBarState == TRANSIENT_BAR_SHOWING || state == TRANSIENT_BAR_SHOWING) &#123;</span><br><span class="line">            mLastTranslucent = SystemClock.uptimeMillis();</span><br><span class="line">        &#125;</span><br><span class="line">        mTransientBarState = state;</span><br><span class="line">        <span class="keyword">if</span> (DEBUG) Slog.d(mTag, <span class="string">"mTransientBarState: "</span> + transientBarStateToString(state));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时的<code>mWin</code>就是在</p>
+<blockquote>
+<p>framework\base\services\core\java\com\android\server\policy\PhoneWindowManager.java</p>
+</blockquote>
+<p>里面的 <code>public int prepareAddWindowLw(WindowState win, WindowManager.LayoutParams attrs)</code>函数里面进行设置的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mStatusBarController.setWindow(win);</span><br></pre></td></tr></table></figure>
+
+<p>也就是传递进去的statusbar了。</p>
+<p>从函数<code>setTransientBarState(int state)</code>来看，其仅仅只是将一个状态进行了设置。那么，显示到底是怎么进行的呢？</p>
+<p>我们看到<code>private void requestTransientBars(WindowState swipeTarget)</code>函数最后的调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">updateSystemUiVisibilityLw();</span><br></pre></td></tr></table></figure>
+
+<p>函数比较长，截取部分代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">updateSystemUiVisibilityLw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// If there is no window focused, there will be nobody to handle the events</span></span><br><span class="line">    <span class="comment">// anyway, so just hang on in whatever state we're in until things settle down.</span></span><br><span class="line">    WindowState winCandidate = mFocusedWindow != <span class="keyword">null</span> ? mFocusedWindow</span><br><span class="line">            : mTopFullscreenOpaqueWindowState;</span><br><span class="line">    <span class="keyword">if</span> (winCandidate == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> visibility = updateSystemBarsLw(win, mLastSystemUiFlags, tmpVisibility);</span><br><span class="line">    ...</span><br><span class="line">    mHandler.post(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                StatusBarManagerInternal statusbar = getStatusBarManagerInternal();</span><br><span class="line">                <span class="keyword">if</span> (statusbar != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    statusbar.setSystemUiVisibility(visibility, fullscreenVisibility,</span><br><span class="line">                            dockedVisibility, <span class="number">0xffffffff</span>, fullscreenStackBounds,</span><br><span class="line">                            dockedStackBounds, win.toString());</span><br><span class="line">                    statusbar.topAppWindowChanged(needsMenu);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">     &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>我们重点看下这个<code>mHandler.post</code>里面的代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">StatusBarManagerInternal statusbar = getStatusBarManagerInternal();</span><br></pre></td></tr></table></figure>
+
+<p>这个<code>statusbar</code>是什么呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">StatusBarManagerInternal <span class="title">getStatusBarManagerInternal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (mServiceAquireLock) &#123;</span><br><span class="line">        <span class="keyword">if</span> (mStatusBarManagerInternal == <span class="keyword">null</span>) &#123;</span><br><span class="line">            mStatusBarManagerInternal =</span><br><span class="line">                    LocalServices.getService(StatusBarManagerInternal.class);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mStatusBarManagerInternal;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>framework\base\services\core\java\com\android\server\statusbar\StatusBarManagerInternal.java</p>
+</blockquote>
+<p>它就是一个interface。我们去找找注册的service。</p>
+<blockquote>
+<p>framework\base\services\core\java\com\android\server\statusbar\StatusBarManagerService.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Construct the service, add the status bar view to the window manager</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">StatusBarManagerService</span><span class="params">(Context context, WindowManagerService windowManager)</span> </span>&#123;</span><br><span class="line">    mContext = context;</span><br><span class="line">    mWindowManager = windowManager;</span><br><span class="line"></span><br><span class="line">    LocalServices.addService(StatusBarManagerInternal.class, mInternalService);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，在<code>StatusBarManagerService</code>的构造函数里面，将其注册为了一个服务名称为<code>StatusBarManagerInternal.class</code>的服务，服务为<code>mInternalService</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Private API used by NotificationManagerService.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> StatusBarManagerInternal mInternalService = <span class="keyword">new</span> StatusBarManagerInternal() &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> mNotificationLightOn;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNotificationDelegate</span><span class="params">(NotificationDelegate delegate)</span> </span>&#123;</span><br><span class="line">        mNotificationDelegate = delegate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buzzBeepBlinked</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mBar != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                mBar.buzzBeepBlinked();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (RemoteException ex) &#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>所以，就会调用到<code>mInternalService</code>里面实现的<code>setSystemUiVisibility</code>方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSystemUiVisibility</span><span class="params">(<span class="keyword">int</span> vis, <span class="keyword">int</span> fullscreenStackVis, <span class="keyword">int</span> dockedStackVis,</span></span></span><br><span class="line"><span class="function"><span class="params">                                  <span class="keyword">int</span> mask,</span></span></span><br><span class="line"><span class="function"><span class="params">                                  Rect fullscreenBounds, Rect dockedBounds, String cause)</span> </span>&#123;</span><br><span class="line">    StatusBarManagerService.<span class="keyword">this</span>.setSystemUiVisibility(vis, fullscreenStackVis,</span><br><span class="line">            dockedStackVis, mask, fullscreenBounds, dockedBounds, cause);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最终调用的还是<code>StatusBarManagerService</code>里面的<code>setSystemUiVisibility</code>方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSystemUiVisibility</span><span class="params">(<span class="keyword">int</span> vis, <span class="keyword">int</span> mask, String cause)</span> </span>&#123;</span><br><span class="line">    setSystemUiVisibility(vis, <span class="number">0</span>, <span class="number">0</span>, mask, mFullscreenStackBounds, mDockedStackBounds, cause);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setSystemUiVisibility</span><span class="params">(<span class="keyword">int</span> vis, <span class="keyword">int</span> fullscreenStackVis, <span class="keyword">int</span> dockedStackVis, <span class="keyword">int</span> mask,</span></span></span><br><span class="line"><span class="function"><span class="params">                                   Rect fullscreenBounds, Rect dockedBounds, String cause)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// also allows calls from window manager which is in this process.</span></span><br><span class="line">    enforceStatusBarService();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (SPEW) Slog.d(TAG, <span class="string">"setSystemUiVisibility(0x"</span> + Integer.toHexString(vis) + <span class="string">")"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">synchronized</span> (mLock) &#123;</span><br><span class="line">        updateUiVisibilityLocked(vis, fullscreenStackVis, dockedStackVis, mask,</span><br><span class="line">                fullscreenBounds, dockedBounds);</span><br><span class="line">        disableLocked(</span><br><span class="line">                mCurrentUserId,</span><br><span class="line">                vis &amp; StatusBarManager.DISABLE_MASK,</span><br><span class="line">                mSysUiVisToken,</span><br><span class="line">                cause, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>经过一系列的回调，最终到了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">updateUiVisibilityLocked</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> vis,</span></span></span><br><span class="line"><span class="function"><span class="params">                                      <span class="keyword">final</span> <span class="keyword">int</span> fullscreenStackVis, <span class="keyword">final</span> <span class="keyword">int</span> dockedStackVis, <span class="keyword">final</span> <span class="keyword">int</span> mask,</span></span></span><br><span class="line"><span class="function"><span class="params">                                      <span class="keyword">final</span> Rect fullscreenBounds, <span class="keyword">final</span> Rect dockedBounds)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mSystemUiVisibility != vis</span><br><span class="line">            || mFullscreenStackSysUiVisibility != fullscreenStackVis</span><br><span class="line">            || mDockedStackSysUiVisibility != dockedStackVis</span><br><span class="line">            || !mFullscreenStackBounds.equals(fullscreenBounds)</span><br><span class="line">            || !mDockedStackBounds.equals(dockedBounds)) &#123;</span><br><span class="line">        mSystemUiVisibility = vis;</span><br><span class="line">        mFullscreenStackSysUiVisibility = fullscreenStackVis;</span><br><span class="line">        mDockedStackSysUiVisibility = dockedStackVis;</span><br><span class="line">        mFullscreenStackBounds.set(fullscreenBounds);</span><br><span class="line">        mDockedStackBounds.set(dockedBounds);</span><br><span class="line">        mHandler.post(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (mBar != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        mBar.setSystemUiVisibility(vis, fullscreenStackVis, dockedStackVis,</span><br><span class="line">                                mask, fullscreenBounds, dockedBounds);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (RemoteException ex) &#123;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同样的，我们重点看看函数<code>updateUiVisibilityLocked</code>里面的<code>mHandler.post</code>代码。</p>
+<p>此处的mBar是怎么初始化的呢？</p>
+<blockquote>
+<p>framework\base\services\core\java\com\android\server\statusbar\StatusBarManagerService.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerStatusBar</span><span class="params">(IStatusBar bar, List&lt;String&gt; iconSlots,</span></span></span><br><span class="line"><span class="function"><span class="params">        List&lt;StatusBarIcon&gt; iconList, <span class="keyword">int</span> switches[], List&lt;IBinder&gt; binders,</span></span></span><br><span class="line"><span class="function"><span class="params">        Rect fullscreenStackBounds, Rect dockedStackBounds)</span> </span>&#123;</span><br><span class="line">    enforceStatusBarService();</span><br><span class="line"></span><br><span class="line">    Slog.i(TAG, <span class="string">"registerStatusBar bar="</span> + bar);</span><br><span class="line">    mBar = bar;</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>这个时候就要回到SystemUI里面了。</p>
+<blockquote>
+<p>SystemUI\app\src\main\java\com\android\systemui\statusbar\BaseStatusBar.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> CommandQueue mCommandQueue;</span><br><span class="line"><span class="keyword">protected</span> IStatusBarService mBarService;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mWindowManager = (WindowManager)mContext.getSystemService(Context.WINDOW_SERVICE);</span><br><span class="line">    mWindowManagerService = WindowManagerGlobal.getWindowManagerService();</span><br><span class="line">    mDisplay = mWindowManager.getDefaultDisplay();</span><br><span class="line">    mDevicePolicyManager = (DevicePolicyManager)mContext.getSystemService(</span><br><span class="line">            Context.DEVICE_POLICY_SERVICE);</span><br><span class="line"></span><br><span class="line">    mNotificationData = <span class="keyword">new</span> NotificationData(<span class="keyword">this</span>);</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        mBarService.registerStatusBar(mCommandQueue, iconSlots, icons, switches, binders,</span><br><span class="line">                fullscreenStackBounds, dockedStackBounds);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (RemoteException ex) &#123;</span><br><span class="line">        <span class="comment">// If the system process isn't there we're doomed anyway.</span></span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>我们看到从SystemUI传递过去的bar为<code>mCommandQueue</code>。</p>
+<blockquote>
+<p>SystemUI\app\src\main\java\com\android\systemui\statusbar\CommandQueue.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CommandQueue</span> <span class="keyword">extends</span> <span class="title">IStatusBar</span>.<span class="title">Stub</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> INDEX_MASK = <span class="number">0xffff</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MSG_SHIFT  = <span class="number">16</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MSG_MASK   = <span class="number">0xffff</span> &lt;&lt; MSG_SHIFT;</span><br><span class="line">       ...</span><br></pre></td></tr></table></figure>
+
+<p>所以，<code>StatusBarManagerService.java</code>文件里面的<code>updateUiVisibilityLocked</code>函数调用的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mBar.setSystemUiVisibility(vis, fullscreenStackVis, dockedStackVis,</span><br><span class="line">                                    mask, fullscreenBounds, dockedBounds);</span><br></pre></td></tr></table></figure>
+
+<p>就是调用的<code>CommandQueue.java</code>文件里面的方法。</p>
+<blockquote>
+<p>SystemUI\app\src\main\java\com\android\systemui\statusbar\CommandQueue.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSystemUiVisibility</span><span class="params">(<span class="keyword">int</span> vis, <span class="keyword">int</span> fullscreenStackVis, <span class="keyword">int</span> dockedStackVis,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">int</span> mask, Rect fullscreenStackBounds, Rect dockedStackBounds)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (mLock) &#123;</span><br><span class="line">        <span class="comment">// Don't coalesce these, since it might have one time flags set such as</span></span><br><span class="line">        <span class="comment">// STATUS_BAR_UNHIDE which might get lost.</span></span><br><span class="line">        SomeArgs args = SomeArgs.obtain();</span><br><span class="line">        args.argi1 = vis;</span><br><span class="line">        args.argi2 = fullscreenStackVis;</span><br><span class="line">        args.argi3 = dockedStackVis;</span><br><span class="line">        args.argi4 = mask;</span><br><span class="line">        args.arg1 = fullscreenStackBounds;</span><br><span class="line">        args.arg2 = dockedStackBounds;</span><br><span class="line">        mHandler.obtainMessage(MSG_SET_SYSTEMUI_VISIBILITY, args).sendToTarget();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>handler处的处理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> MSG_SET_SYSTEMUI_VISIBILITY:</span><br><span class="line">    SomeArgs args = (SomeArgs) msg.obj;</span><br><span class="line">    mCallbacks.setSystemUiVisibility(args.argi1, args.argi2, args.argi3,</span><br><span class="line">            args.argi4, (Rect) args.arg1, (Rect) args.arg2);</span><br><span class="line">    args.recycle();</span><br><span class="line">    <span class="keyword">break</span>;</span><br></pre></td></tr></table></figure>
+
+<p>调用回调<code>mCallbacks</code>里面的方法。最终调用到</p>
+<blockquote>
+<p>SystemUI\app\src\main\java\com\android\systemui\statusbar\phone\PhoneStatusBar.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span> <span class="comment">// CommandQueue</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSystemUiVisibility</span><span class="params">(<span class="keyword">int</span> vis, <span class="keyword">int</span> fullscreenStackVis, <span class="keyword">int</span> dockedStackVis,</span></span></span><br><span class="line"><span class="function"><span class="params">                                  <span class="keyword">int</span> mask, Rect fullscreenStackBounds, Rect dockedStackBounds)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> oldVal = mSystemUiVisibility;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> newVal = (oldVal &amp; ~mask) | (vis &amp; mask);</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> diff = newVal ^ oldVal;</span><br><span class="line">    Log.d(TAG, String.format(</span><br><span class="line">            <span class="string">"setSystemUiVisibility vis=%s mask=%s oldVal=%s newVal=%s diff=%s"</span>,</span><br><span class="line">            Integer.toHexString(vis), Integer.toHexString(mask),</span><br><span class="line">            Integer.toHexString(oldVal), Integer.toHexString(newVal),</span><br><span class="line">            Integer.toHexString(diff)));</span><br><span class="line">    <span class="keyword">boolean</span> sbModeChanged = <span class="keyword">false</span>;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// send updated sysui visibility to window manager</span></span><br><span class="line">    notifyUiVisibilityChanged(mSystemUiVisibility);</span><br></pre></td></tr></table></figure>
+
+<p>一系列设置之后，最后调用<code>notifyUiVisibilityChanged</code>来通知window manager更新</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">notifyUiVisibilityChanged</span><span class="params">(<span class="keyword">int</span> vis)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (mLastDispatchedSystemUiVisibility != vis) &#123;</span><br><span class="line">            mWindowManagerService.statusBarVisibilityChanged(vis);</span><br><span class="line">            mLastDispatchedSystemUiVisibility = vis;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (RemoteException ex) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>framework\base\services\core\java\com\android\server\wm\WindowManagerService.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">statusBarVisibilityChanged</span><span class="params">(<span class="keyword">int</span> visibility)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mContext.checkCallingOrSelfPermission(android.Manifest.permission.STATUS_BAR)</span><br><span class="line">            != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> SecurityException(<span class="string">"Caller does not hold permission "</span></span><br><span class="line">                + android.Manifest.permission.STATUS_BAR);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">synchronized</span> (mWindowMap) &#123;</span><br><span class="line">        mLastStatusBarVisibility = visibility;</span><br><span class="line">        visibility = mPolicy.adjustSystemUiVisibilityLw(visibility);</span><br><span class="line">        updateStatusBarVisibilityLocked(visibility);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>看到有句代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">visibility = mPolicy.adjustSystemUiVisibilityLw(visibility);</span><br></pre></td></tr></table></figure>
+
+<p>从前面的分析可知，<code>mPolicy</code>就是<code>PhoneWindowManager</code>的实例。</p>
+<blockquote>
+<p>framework\base\services\core\java\com\android\server\policy\PhoneWindowManager.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">adjustSystemUiVisibilityLw</span><span class="params">(<span class="keyword">int</span> visibility)</span> </span>&#123;</span><br><span class="line">    mStatusBarController.adjustSystemUiVisibilityLw(mLastSystemUiFlags, visibility);</span><br><span class="line">    mNavigationBarController.adjustSystemUiVisibilityLw(mLastSystemUiFlags, visibility);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Reset any bits in mForceClearingStatusBarVisibility that</span></span><br><span class="line">    <span class="comment">// are now clear.</span></span><br><span class="line">    mResettingSystemUiFlags &amp;= visibility;</span><br><span class="line">    <span class="comment">// Clear any bits in the new visibility that are currently being</span></span><br><span class="line">    <span class="comment">// force cleared, before reporting it.</span></span><br><span class="line">    <span class="keyword">return</span> visibility &amp; ~mResettingSystemUiFlags</span><br><span class="line">            &amp; ~mForceClearedSystemUiFlags;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此处会调用<code>mStatusBarController</code>的<code>adjustSystemUiVisibilityLw</code>方法。</p>
+<blockquote>
+<p>framework\base\services\core\java\com\android\server\policy\BarController.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">adjustSystemUiVisibilityLw</span><span class="params">(<span class="keyword">int</span> oldVis, <span class="keyword">int</span> vis)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mWin != <span class="keyword">null</span> &amp;&amp; mTransientBarState == TRANSIENT_BAR_SHOWING &amp;&amp;</span><br><span class="line">            (vis &amp; mTransientFlag) == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// sysui requests hide</span></span><br><span class="line">        setTransientBarState(TRANSIENT_BAR_HIDING);</span><br><span class="line">        setBarShowingLw(<span class="keyword">false</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mWin != <span class="keyword">null</span> &amp;&amp; (oldVis &amp; mUnhideFlag) != <span class="number">0</span> &amp;&amp; (vis &amp; mUnhideFlag) == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// sysui ready to unhide</span></span><br><span class="line">        setBarShowingLw(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">setBarShowingLw</span><span class="params">(<span class="keyword">final</span> <span class="keyword">boolean</span> show)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mWin == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (show &amp;&amp; mTransientBarState == TRANSIENT_BAR_HIDING) &#123;</span><br><span class="line">        mPendingShow = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">boolean</span> wasVis = mWin.isVisibleLw();</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">boolean</span> wasAnim = mWin.isAnimatingLw();</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">boolean</span> change = show ? mWin.showLw(!mNoAnimationOnNextShow &amp;&amp; !skipAnimation())</span><br><span class="line">            : mWin.hideLw(!mNoAnimationOnNextShow &amp;&amp; !skipAnimation());</span><br><span class="line">    mNoAnimationOnNextShow = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> state = computeStateLw(wasVis, wasAnim, mWin, change);</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">boolean</span> stateChanged = updateStateLw(state);</span><br><span class="line">    <span class="keyword">return</span> change || stateChanged;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>之前分析得知，此处的<code>mWin</code>就是对应的bar，此时就是调用的bar本身的<code>showLw</code>方法。</p>
+<p>那么怎么自动隐藏呢？</p>
+<blockquote>
+<p>SystemUI\app\src\main\java\com\android\systemui\statusbar\phone\PhoneStatusBar.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span> <span class="comment">// CommandQueue</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSystemUiVisibility</span><span class="params">(<span class="keyword">int</span> vis, <span class="keyword">int</span> fullscreenStackVis, <span class="keyword">int</span> dockedStackVis,</span></span></span><br><span class="line"><span class="function"><span class="params">                                  <span class="keyword">int</span> mask, Rect fullscreenStackBounds, Rect dockedStackBounds)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> oldVal = mSystemUiVisibility;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> newVal = (oldVal &amp; ~mask) | (vis &amp; mask);</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> diff = newVal ^ oldVal;</span><br><span class="line">    ...</span><br><span class="line">       <span class="keyword">if</span> (sbModeChanged || nbModeChanged) &#123;</span><br><span class="line">            <span class="comment">// update transient bar autohide</span></span><br><span class="line">            <span class="keyword">if</span> (mStatusBarMode == MODE_SEMI_TRANSPARENT || mNavigationBarMode == MODE_SEMI_TRANSPARENT) &#123;</span><br><span class="line">                scheduleAutohide();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cancelAutohide();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">   ...</span><br></pre></td></tr></table></figure>
+
+<p>调用函数<code>scheduleAutohide</code>来执行自动隐藏。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Runnable mAutohide = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> requested = mSystemUiVisibility &amp; ~STATUS_OR_NAV_TRANSIENT;</span><br><span class="line">        <span class="keyword">if</span> (mSystemUiVisibility != requested) &#123;</span><br><span class="line">            notifyUiVisibilityChanged(requested);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>最终还是调用的<code>notifyUiVisibilityChanged</code>函数。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.ljx2010hxj.cn/2019/07/08/Android/Android--Statusbar-Show-Hide/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/07/04/Baby-ready-to-kindergarten/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">叮当的幼儿园报名</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -236,8 +489,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

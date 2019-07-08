@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.ljx2010hxj.cn">
-  <title>Archives: 2019/6 | CNK</title>
+  <title>C语言--位运算符 | CNK</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="无为大叔，努力有为。">
-<meta name="keywords" content="android, 移动端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CNK">
-<meta property="og:url" content="https://www.ljx2010hxj.cn/archives/2019/06/index.html">
+  <meta name="description" content="2019/5/24 9:31:59 C语言提供了6个位运算符，用于对整数数据进行位运算。">
+<meta name="keywords" content="C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言--位运算符">
+<meta property="og:url" content="https://www.ljx2010hxj.cn/2019/05/24/C/C--Shift-Operator/index.html">
 <meta property="og:site_name" content="CNK">
-<meta property="og:description" content="无为大叔，努力有为。">
+<meta property="og:description" content="2019/5/24 9:31:59 C语言提供了6个位运算符，用于对整数数据进行位运算。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-08T11:08:10.890Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CNK">
-<meta name="twitter:description" content="无为大叔，努力有为。">
+<meta name="twitter:title" content="C语言--位运算符">
+<meta name="twitter:description" content="2019/5/24 9:31:59 C语言提供了6个位运算符，用于对整数数据进行位运算。">
   
     <link rel="alternative" href="/atom.xml" title="CNK" type="application/atom+xml">
   
@@ -160,60 +161,191 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-C/C--Shift-Operator" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/16/start/" class="archive-article-date">
-  	<time datetime="2019-06-16T08:32:06.664Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/16/start/">新的起点</a>
+    <h1 class="article-title" itemprop="name">
+      C语言--位运算符
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/05/24/C/C--Shift-Operator/" class="archive-article-date">
+  	<time datetime="2019-05-24T01:31:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>2019/5/24 9:31:59</strong></p>
+<p>C语言提供了6个位运算符，用于对<font color="cc0000">整数数据</font>进行位运算。</p>
+<a id="more"></a>
+
+<h2 id="移位运算符"><a href="#移位运算符" class="headerlink" title="移位运算符"></a>移位运算符</h2><p>C语言提供了两个移位运算符：&#60;&#60;(左移位)和&#62;&#62;(右移位)。</p>
+<p>运算符&#60;&#60;和运算符&#62;&#62;的操作数可以是任意整数类型（包括char类型）。对两个操作数都会进行整数提升，返回值的类型是左操作数提升后的类型。</p>
+<p>i&#60;&#60;j的值是将i中的位左移j位后的结果。每次从i的最左端溢出一位，在i的最右端补一个0位。i&#62;&#62;j的值是将i中的位右移j位后的结果。如果i是无符号数或者非负数，则需要在i的左端补0.如果i是负值，其结果是由实现定义的：一些实现会在左端补0，一些实现会保留符号位而补1.</p>
+<p><strong>可移植性技巧</strong> 为了可移植性，最好仅对无符号数进行移位操作。</p>
+<p><font color="cc0000">注意：</font>移位运算符的优先级比算术运算符低，所以，i&#60;&#60;2 + 1;的真实执行是：i&#60;&#60;(2 + 1); 并不是(i&#60;&#60;2) + 1;</p>
+<h2 id="其他位运算符"><a href="#其他位运算符" class="headerlink" title="其他位运算符"></a>其他位运算符</h2><p>运算符~ ，按位求反，是一元运算符，对其操作数会进行整数提升。其他都是二元运算符，对其操作数进行常用的算术转换。<br>运算符 ~ 、&amp;、^、|对操作数的每一位执行布尔运算。~运算符会产生对操作数求反的结果，即将每一个0替换成1，每一个1替换成0。运算符&amp;对两个操作数相应的位执行逻辑与运算。运算符^和|相似（都是对两个操作数执行逻辑或运算），不同的是，当两个操作数的位都是1的时候，^产生0而|产生1（其他都是一样的，比如，两个操作数的位都是0的时候，两者产生的结果都是0）。</p>
+<h3 id="对于运算符-的理解"><a href="#对于运算符-的理解" class="headerlink" title="对于运算符~的理解"></a>对于运算符~的理解</h3><p>这个是取反运算符，会对符号位产生操作。以下以unsigned short int 类型16位的变量i为例</p>
+<p>i = 21; //二进制码为：0000 0000 0001 0101</p>
+<p>i = ~i; //二进制码为：1111 1111 1110 1010</p>
+<p>所以，如果想要一个整数的所有位都为1，那么使用 ~0 ，因为0的二进制码为：0000 0000 0000 0000, 对应的 ~0 的二进制码为：1111 1111 1111 1111</p>
+<p>类似的，如果我们需要一个整数，除了最后的5位，其他所有的位都为1，我们可以写成： ~0x1f 。0x1f的二进制码为：0000 0000 0001 1111, 则对应的 ~0x1f 的二进制码为：1111 1111 1110 0000。</p>
+<h2 id="用位运算符访问位"><a href="#用位运算符访问位" class="headerlink" title="用位运算符访问位"></a>用位运算符访问位</h2><p>假设i是一个16位的unsigned short int变量。</p>
+<h3 id="位的设置"><a href="#位的设置" class="headerlink" title="位的设置"></a>位的设置</h3><p>假设我们需要设置i的第5位，最简单的方法是将i的值与常量0x0010进行或操作：</p>
+<p>i = 0x0000； //二进制码：0000 0000 0000 0000 <br><br>i |= 0x0010；//二进制码：0000 0000 0001 0000</p>
+<p>更通用的做法是：如果需要设置的位的位置存储在变量j中，可以使用移位运算符来构造掩码：<br><br>j = 4;<br><br>i |= 1 &lt;&lt; j;</p>
+<p>1 &lt;&lt; 4 就是0x0010,然后i与之进行或操作。注意：此处移位操作为移动4位，从而影响到第5位。</p>
+<h3 id="位的清除"><a href="#位的清除" class="headerlink" title="位的清除"></a>位的清除</h3><p>要清除i的第5位，可以使用第5位位0，其他位位1的掩码：<br><br>掩码：~0x0010, 二进制码为：1111 1111 1110 1111<br><br>i = 0x00ff ;  //二进制码：0000 0000 1111 1111<br><br>i &amp;= ~0x0010;//二进制码：0000 0000 1110 1111</p>
+<p>按照类似的思路，我们可以很容易编写语句来清除特定的位，这个位的位置存储在变量中：<br><br>i &amp;= ~(1 &lt;&lt; j);</p>
+<p><font color="cc0000">需要注意：我们移动的位数与位在变量中的位置，比如，我们移动4位，此时会影响到变量中的第5位。1移动4位就变成了1 0000，处于变量的第5个位置，当然，如果变量的第1个位置为第0位，那么，移动的位数和变量中对应的位置就是对应的了。</font></p>
+<h3 id="位的测试"><a href="#位的测试" class="headerlink" title="位的测试"></a>位的测试</h3><p>下面的if语句测试i的第5位是否被设置：<br>if(i &amp; 0x0010)…</p>
+<p>如果要测试第j位是否被设置，可以使用如下语句：<br>if(i &amp; (1 &lt;&lt; j))…</p>
+<p>为了使对于位的操作更容易，经常会给他们起名字。例如，如果我们想要使一个数的第0、1、2位对应于相应的颜色蓝、绿、红：<br><br>#define BLUE 1<br><br>#define GREEN 2<br><br>#define RED 4</p>
+<p>设置、清除或者测试BLUE位可以如下进行：<br> i |= BLUE;// set blue bit<br><br>i &amp;= ~BLUE;//clear blue bit<br> if(i &amp; BLUE)…//test blue bit</p>
+<p>同时设置、清除或者测试几个位也是一样简单：<br>i |= BLUE | GREEN;<br>i &amp;= ~(BLUE | GREEN);<br>if(i &amp; (BLUE | GREEN))…</p>
+<h2 id="用位运算符访问位域"><a href="#用位运算符访问位域" class="headerlink" title="用位运算符访问位域"></a>用位运算符访问位域</h2><p>处理一组连续的位（位域）比处理单个的位要复杂一些。</p>
+<h3 id="修改位域"><a href="#修改位域" class="headerlink" title="修改位域"></a>修改位域</h3><p>修改位域需要使用按位与（用来清除位域），接着使用按位或（用来将新的位存入位域）。下面的语句显示了将二进制的值101存入变量i的第5位至第7位：<br> i = i &amp; ~0x0070 | 0x0050;</p>
+<p>为了使之更通用，我们假设变量j包含了需要存储到i的第5位到第7位的值，我们需要在执行按位或操作之前将j移位至相应的位置：<br>i = (i &amp; ~0x0070) | (j &lt;&lt; 4);</p>
+<p>例如，假设 j = 5;//二进制码：0000 0000 0000 0101,所以 j &lt;&lt; 4;//二进制码：0000 0000 0101 0000</p>
+<p>然后执行按位或操作，就相当于把数字5给保存到了i的第5位至第7位了。这里需要注意的一点就是，保存到j里面的数字的高位对应i里面的高位。</p>
+<h3 id="获取位域"><a href="#获取位域" class="headerlink" title="获取位域"></a>获取位域</h3><p>当位域处于数的右端（最低有效位）时，获取它的值非常方便。例如，下面的语句获取了变量i的1到3位的值：<br> j = i &amp; 0x0007;</p>
+<p>如果位域不在变量i的右端，那么需要先将位域移位至右端，再使用运算符&amp;提取位域。例如，要获取变量i的第5位至第7位，可以使用下面的语句：<br>j = (i &gt;&gt; 4) &amp; 0x0007;</p>
+<p><strong>TODO</strong></p>
+<p>位运算符对于符号位的影响？平时尽量使用无符号数，但是，假如是有符号数呢？</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.ljx2010hxj.cn/2019/05/24/C/C--Shift-Operator/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/06/16/start/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          新的起点
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/05/07/The-travel-on-Tiger-Leaping-Gorge/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">虎跳峡徒步之旅</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -236,8 +368,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
