@@ -6,19 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.ljx2010hxj.cn">
-  <title>Archives: 2019 | CNK</title>
+  <title>OpenGL ES 三角形的绘制方式 | CNK</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="无为大叔，努力有为。">
-<meta name="keywords" content="android, 移动端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CNK">
-<meta property="og:url" content="https://www.ljx2010hxj.cn/archives/2019/index.html">
+  <meta name="description" content="OpenGL ES: Open Graphics Library Embedded System 介绍OpenGL ES里面有关画三角形的三种方式，重点介绍GL_STRIANGLE_STRIP 。">
+<meta name="keywords" content="OpenGLES">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGL ES 三角形的绘制方式">
+<meta property="og:url" content="https://www.ljx2010hxj.cn/2019/07/26/OpenGL/OpenGL-ES-GL-TRIANGLE-STRIP/index.html">
 <meta property="og:site_name" content="CNK">
-<meta property="og:description" content="无为大叔，努力有为。">
+<meta property="og:description" content="OpenGL ES: Open Graphics Library Embedded System 介绍OpenGL ES里面有关画三角形的三种方式，重点介绍GL_STRIANGLE_STRIP 。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://blog.jayway.com/wp-content/uploads/2009/11/Gl_triangles.jpg">
+<meta property="og:image" content="https://www.ljx2010hxj.cn/assets/img/201907/opengl_es_gl_striangle_strip_coordinate.jpg">
+<meta property="og:image" content="https://www.ljx2010hxj.cn/assets/img/201907/opengl_es_gl_striangle_strip_even.png">
+<meta property="og:image" content="https://www.ljx2010hxj.cn/assets/img/201907/opengl_es_gl_striangle_strip_odd.jpg">
+<meta property="og:image" content="https://blog.jayway.com/wp-content/uploads/2009/11/Gl_triangle_strip.jpg">
+<meta property="og:image" content="https://blog.jayway.com/wp-content/uploads/2009/11/Gl_triangle_fan.jpg">
+<meta property="og:updated_time" content="2019-07-27T05:21:56.340Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CNK">
-<meta name="twitter:description" content="无为大叔，努力有为。">
+<meta name="twitter:title" content="OpenGL ES 三角形的绘制方式">
+<meta name="twitter:description" content="OpenGL ES: Open Graphics Library Embedded System 介绍OpenGL ES里面有关画三角形的三种方式，重点介绍GL_STRIANGLE_STRIP 。">
+<meta name="twitter:image" content="https://blog.jayway.com/wp-content/uploads/2009/11/Gl_triangles.jpg">
   
     <link rel="alternative" href="/atom.xml" title="CNK" type="application/atom+xml">
   
@@ -160,74 +168,99 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-OpenGL/OpenGL-ES-GL-TRIANGLE-STRIP" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/29/Baby/baby/" class="archive-article-date">
-  	<time datetime="2019-07-29T15:04:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-29</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/29/Baby/baby/">叮当的日常小语</a>
+    <h1 class="article-title" itemprop="name">
+      OpenGL ES 三角形的绘制方式
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">nida</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/26/OpenGL/OpenGL-ES-GL-TRIANGLE-STRIP/" class="archive-article-date">
+        
+        <a href="/2019/07/26/OpenGL/OpenGL-ES-GL-TRIANGLE-STRIP/" class="archive-article-date">
   	<time datetime="2019-07-26T13:54:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/26/OpenGL/OpenGL-ES-GL-TRIANGLE-STRIP/">OpenGL ES 三角形的绘制方式</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!--2019/7/26 21:54:09-->
 
-        <div class="article-info info-on-right">
-          
+<p><strong>OpenGL ES:</strong> Open Graphics Library Embedded System</p>
+<p>介绍OpenGL ES里面有关画三角形的三种方式，重点介绍GL_STRIANGLE_STRIP 。</p>
+<a id="more"></a>
+
+<p><strong>OpenGL ES 里面绘制三角形有三种方式：</strong></p>
+<p><strong><em>GL_TRIANGLES</em></strong></p>
+<p>3个顶点一组绘制一个三角形，最后不足3个的顶点舍弃。其效果如下</p>
+<div class="custom_img" align="center">
+    <img src="https://blog.jayway.com/wp-content/uploads/2009/11/Gl_triangles.jpg">
+</div>
+
+
+<p><strong><em>GL_TRIANGLES_STRIP</em></strong></p>
+<p><code>GL_TRIANGLE_STRIP</code>是将顶点传递给opengl渲染管道线（pipeline）进行进一步处理的方式（创建几何图形）。</p>
+<div class="custom_img" align="center">
+    <img src="/assets/img/201907/opengl_es_gl_striangle_strip_coordinate.jpg" width="300" height="400">
+</div>
+
+<p>上图四边形，由6个点构成了四个三角形，顶点传递到渲染管道线的顺序是影响环绕顺序的关键。</p>
+<p>创建一个三角形至少需要三个顶点，每一个新增的顶点都形成一个新的三角形。三角形将根据顶点序号的奇偶自行创建：</p>
+<p>偶数环绕规则：</p>
+<div class="custom_img">
+    <img src="/assets/img/201907/opengl_es_gl_striangle_strip_even.png">
+</div>
+
+<p>奇数环绕规则：</p>
+<div class="custom_img">
+    <img src="/assets/img/201907/opengl_es_gl_striangle_strip_odd.jpg">
+</div>
+
+<p>分析下上面的绘制过程：</p>
+<ul>
+<li><p>V1,v2,v3形成了第一个三角形，你也可以说v3是奇数，所以由v1,v2,v3构成。</p>
+</li>
+<li><p>V4是偶数，所以下一个三角形由v3,v2,v4构成。</p>
+</li>
+<li><p>V5是奇数，所以下一个三角形由v3,v4,v5构成</p>
+</li>
+<li><p>V6是偶数，所以下一个三角形由v5,v4,v6构成</p>
+</li>
+</ul>
+<p>考虑到两种绘制三角形的方式，环绕方式作为保留。</p>
+<p>那么这种方式有什么好处呢？</p>
+<blockquote>
+<p>减少顶点传递，渲染时api向显卡传输数据量是瓶颈,用较好的传递方法传递一个三角形最少可以少于一个点。</p>
+</blockquote>
+<p>点的顺序根据奇数，偶数不一样的原因：保持所有三角形法线在同一方向。从上面不难看出，绘制方向都是逆时针的,也就是说，需要保持绘制的方向都是一致的。</p>
+<p>看看其效果图</p>
+<div class="custom_img" align="center">
+    <img src="https://blog.jayway.com/wp-content/uploads/2009/11/Gl_triangle_strip.jpg">
+</div>
+
+<p><strong>绘制顺序为：</strong>v0, v1, v2, 然后v2, v1, v3, 然后v2, v3, v4, 最后v4, v3, v5</p>
+<p><strong><em>GL_TRIANGLES_FAN</em></strong></p>
+<p>以第一个顶点为起始点，连接其他的两个顶点，以扇形的方式绘制三角形，效果图如下</p>
+<div class="custom_img" align="center">
+    <img src="https://blog.jayway.com/wp-content/uploads/2009/11/Gl_triangle_fan.jpg">
+</div>
+
+<p><strong>绘制顺序为：</strong>v0, v1, v2, 然后v0, v2, v3, 然后v0, v3, v4…</p>
+<p><strong><em>参考文章</em></strong></p>
+<p><a href="http://blog.sina.com.cn/s/blog_6084f58801019dja.html" title="理解GL_TRIANGLE_STRIP（译）" target="_blank" rel="noopener">理解GL_TRIANGLE_STRIP（译）</a></p>
+<p><a href="https://blog.jayway.com/2009/12/04/opengl-es-tutorial-for-android-part-ii-building-a-polygon/" title="OpenGL ES Tutorial for Android – Part II – Building a polygon" target="_blank" rel="noopener">OpenGL ES Tutorial for Android – Part II – Building a polygon</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -239,247 +272,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.ljx2010hxj.cn/2019/07/26/OpenGL/OpenGL-ES-GL-TRIANGLE-STRIP/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/08/Android/Android--Statusbar-Show-Hide/" class="archive-article-date">
-  	<time datetime="2019-07-08T06:32:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-08</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/07/29/Baby/baby/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          叮当的日常小语
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/08/Android/Android--Statusbar-Show-Hide/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android--Statusbar的显示与隐藏</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/08/Android/Android--Statusbar-Show-Hide/">Android--Statusbar的显示与隐藏</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/04/Baby-ready-to-kindergarten/" class="archive-article-date">
-  	<time datetime="2019-07-04T14:41:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/04/Baby-ready-to-kindergarten/">叮当的幼儿园报名</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Daily</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/16/start/" class="archive-article-date">
-  	<time datetime="2019-06-16T08:32:06.664Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/16/start/">新的起点</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/24/C/C--Shift-Operator/" class="archive-article-date">
-  	<time datetime="2019-05-24T01:31:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/24/C/C--Shift-Operator/">C语言--位运算符</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/07/The-travel-on-Tiger-Leaping-Gorge/" class="archive-article-date">
-  	<time datetime="2019-05-06T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/07/The-travel-on-Tiger-Leaping-Gorge/">虎跳峡徒步之旅</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Traveling</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/09/Bracket_meaning_in_command/" class="archive-article-date">
-  	<time datetime="2019-01-09T03:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/09/Bracket_meaning_in_command/">命令行中，括号的意义</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -502,8 +403,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
