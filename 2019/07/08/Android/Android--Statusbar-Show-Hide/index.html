@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://www.ljx2010hxj.cn">
   <title>Android--Statusbar的显示与隐藏 | CNK</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2019/7/8 14:32:21  Statusbar的显示与隐藏过程比较复杂，特别是一些flag的更新与设置。这里将SystemUI与framework的交互过程做了一个大概的介绍。">
+  <meta name="description" content="2019/7/8 14:32:21  当应用全屏显示的时候，StatusBar处于隐藏状态，我们手指从屏幕的最顶端往下滑动，此时会显示StatusBar，几秒之后又会自动隐藏。StatusBar的显示与隐藏过程比较复杂，特别是一些flag的更新与设置。这里将SystemUI与framework的交互过程做了一个大概的介绍。以下基于Android 7.1源码。">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android--Statusbar的显示与隐藏">
 <meta property="og:url" content="https://www.ljx2010hxj.cn/2019/07/08/Android/Android--Statusbar-Show-Hide/index.html">
 <meta property="og:site_name" content="CNK">
-<meta property="og:description" content="2019/7/8 14:32:21  Statusbar的显示与隐藏过程比较复杂，特别是一些flag的更新与设置。这里将SystemUI与framework的交互过程做了一个大概的介绍。">
+<meta property="og:description" content="2019/7/8 14:32:21  当应用全屏显示的时候，StatusBar处于隐藏状态，我们手指从屏幕的最顶端往下滑动，此时会显示StatusBar，几秒之后又会自动隐藏。StatusBar的显示与隐藏过程比较复杂，特别是一些flag的更新与设置。这里将SystemUI与framework的交互过程做了一个大概的介绍。以下基于Android 7.1源码。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-08T11:26:22.958Z">
+<meta property="og:updated_time" content="2019-08-01T10:34:58.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android--Statusbar的显示与隐藏">
-<meta name="twitter:description" content="2019/7/8 14:32:21  Statusbar的显示与隐藏过程比较复杂，特别是一些flag的更新与设置。这里将SystemUI与framework的交互过程做了一个大概的介绍。">
+<meta name="twitter:description" content="2019/7/8 14:32:21  当应用全屏显示的时候，StatusBar处于隐藏状态，我们手指从屏幕的最顶端往下滑动，此时会显示StatusBar，几秒之后又会自动隐藏。StatusBar的显示与隐藏过程比较复杂，特别是一些flag的更新与设置。这里将SystemUI与framework的交互过程做了一个大概的介绍。以下基于Android 7.1源码。">
   
     <link rel="alternative" href="/atom.xml" title="CNK" type="application/atom+xml">
   
@@ -74,7 +74,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/tags/Essay/">随笔</a></li>
 	        
 				<li><a href="/archives">时间轴</a></li>
 	        
@@ -144,7 +144,7 @@
 				
 					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/Essay/">随笔</a></li>
 		        
 					<li style="width: 33.333333333333336%"><a href="/archives">时间轴</a></li>
 		        
@@ -182,7 +182,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>2019/7/8 14:32:21 </p>
-<p>Statusbar的显示与隐藏过程比较复杂，特别是一些flag的更新与设置。这里将SystemUI与framework的交互过程做了一个大概的介绍。</p>
+<p>当应用全屏显示的时候，StatusBar处于隐藏状态，我们手指从屏幕的最顶端往下滑动，此时会显示StatusBar，几秒之后又会自动隐藏。StatusBar的显示与隐藏过程比较复杂，特别是一些flag的更新与设置。这里将SystemUI与framework的交互过程做了一个大概的介绍。以下基于Android 7.1源码。</p>
 <a id="more"></a>
 
 <p>StatusBar的添加</p>
@@ -560,11 +560,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">Essay</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Daily</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">OpenGLES</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -576,15 +580,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Traveling</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OpenGLES</a>
+                <a href="javascript:void(0)" class="js-tag color5">Traveling</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Nida</a>
               </li>
             
             <div class="clearfix"></div>
