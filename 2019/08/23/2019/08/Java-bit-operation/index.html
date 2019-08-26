@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.ljx2010hxj.cn">
-  <title>Archives | CNK</title>
+  <title>java--位运算符 | CNK</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="无为大叔，努力有为。">
-<meta name="keywords" content="android, 移动端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CNK">
-<meta property="og:url" content="https://www.ljx2010hxj.cn/archives/index.html">
+  <meta name="description" content="位运算符主要用来对操作数二进制的位进行运算。按位运算表示按每个二进制位（bit）进行计算，其操作数和运算结果都是整型值。  Java语言中的位运算符分为位逻辑运算符和位移运算符两类">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java--位运算符">
+<meta property="og:url" content="https://www.ljx2010hxj.cn/2019/08/23/2019/08/Java-bit-operation/index.html">
 <meta property="og:site_name" content="CNK">
-<meta property="og:description" content="无为大叔，努力有为。">
+<meta property="og:description" content="位运算符主要用来对操作数二进制的位进行运算。按位运算表示按每个二进制位（bit）进行计算，其操作数和运算结果都是整型值。  Java语言中的位运算符分为位逻辑运算符和位移运算符两类">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-26T13:38:30.426Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CNK">
-<meta name="twitter:description" content="无为大叔，努力有为。">
+<meta name="twitter:title" content="java--位运算符">
+<meta name="twitter:description" content="位运算符主要用来对操作数二进制的位进行运算。按位运算表示按每个二进制位（bit）进行计算，其操作数和运算结果都是整型值。  Java语言中的位运算符分为位逻辑运算符和位移运算符两类">
   
     <link rel="alternative" href="/atom.xml" title="CNK" type="application/atom+xml">
   
@@ -160,36 +161,187 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2019/08/Java-bit-operation" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/23/2019/08/Java-bit-operation/" class="archive-article-date">
-  	<time datetime="2019-08-23T07:41:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/23/2019/08/Java-bit-operation/">java--位运算符</a>
+    <h1 class="article-title" itemprop="name">
+      java--位运算符
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/08/23/2019/08/Java-bit-operation/" class="archive-article-date">
+  	<time datetime="2019-08-23T07:41:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!--2019/8/23 15:41:02-->
+
+<p>位运算符主要用来对操作数二进制的位进行运算。按位运算表示按每个二进制位（bit）进行计算，其操作数和运算结果都是<font color="cc0000"><strong>整型值</strong></font>。</p>
+<p> Java语言中的位运算符分为<strong>位逻辑运算符</strong>和<strong>位移运算符</strong>两类</p>
+<a id="more"></a>
+
+<h2 id="位逻辑运算符"><a href="#位逻辑运算符" class="headerlink" title="位逻辑运算符"></a>位逻辑运算符</h2><p>位逻辑运算符包含 4 个：&amp;（与）、|（或）、~（非）和 ^（异或）。除了 ~（即位取反）为单目运算符外，其余都为双目运算符。</p>
+<p><strong>位与运算符</strong></p>
+<p>位与运算符为 &amp;，其运算规则是：参与运算的数字，低位对齐，高位不足的补零，如果对应的二进制位同时为 1，那么计算结果才为 1，否则为 0。因此，任何数与 0 进行按位与运算，其结果都为 0。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> c = a &amp; b;</span><br><span class="line">Log.d(<span class="string">"nida"</span>, <span class="string">"c="</span> + c);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<blockquote>
+<p>c=4</p>
+</blockquote>
+<p>变量对应的二进制编码为:<br>a–0000 xxxx 0000 0110<br>b–0000 xxxx 0000 0101</p>
+<p>所以，与操作的结果为：<br>c–0000 xxxx 0000 0100  也就是4了。</p>
+<p>再看一个例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = -<span class="number">6</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">int</span> c = a &amp; b;</span><br><span class="line">Log.d(<span class="string">"nida"</span>, <span class="string">"c="</span> + c);</span><br></pre></td></tr></table></figure>
+
+<p>因为参与与运算的两个参数符号位是不同的，符号位也参与操作：<br>a–1000 xxxx 0000 0110(原码)<br>b–0000 xxxx 0000 0110(原码)</p>
+<p>按照与操作的规则，结果为：<br><br>c–0000 xxxx 0000 0110(原码) 此时结果应该是6了。那么，真实的输出结果呢？<br></p>
+<blockquote>
+<p>c=2</p>
+</blockquote>
+<p>为什么是2呢？我们知道，整数在计算机里面是以补码的形式存在的，正数的原码、反码、补码都是自身，但是，负数的就不一样，其反码为原码除了符号位之外的其他位取反，补码是在反码的基础上加1。</p>
+<p>变量a的原码、反码、补码：<br>原码：1000 xxxx 0000 0110<br>反码：1111 xxxx 1111 1001<br>补码：1111 xxxx 1111 1010</p>
+<p>最终a在计算机里面以补码：1111 xxxx 1111 1010的形式存储的。</p>
+<p>变量b在计算机里面的存储:<br>原码：0000 xxxx 0000 0110</p>
+<p>其反码和补码与原码一致。此时，计算机就利用变量a的补码和变量b的补码执行与操作<br>a–1111 xxxx 1111 1010（补码）<br>b–0000 xxxx 0000 0110（补码）</p>
+<p>其结果为c：0000 xxxx 0000 0010 也就是正数2了。</p>
+<p>所以，与操作，严格按照二进制每位来执行，所以当然包括符号位。操作是在计算机里面执行的，所以，是使用补码进行的，如果是负数，注意，要使用补码不能使用原码来执行操作。</p>
+<p>同理，可以验证，-6 &amp; -7 的结果为-8。正数和负数执行与操作的结果一定为正数（符号位不一样，所以符号位执行与操作之后变成了0，也就是变成了正数了）。</p>
+<p><strong>位或运算符</strong></p>
+<p>位或运算符为 |，其运算规则是：参与运算的数字，低位对齐，高位不足的补零。如果对应的二进制位只要有一个为 1，那么结果就为 1；如果对应的二进制位都为 0，结果才为 0。</p>
+<p>同样，使用刚才的代码来验证</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> c = a | b;</span><br><span class="line">Log.d(<span class="string">"nida"</span>, <span class="string">"c="</span> + c);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为</p>
+<blockquote>
+<p>c=7</p>
+</blockquote>
+<p>变量a、b在计算机里面的存储:<br>a–0000 xxxx 0000 0110<br>b–0000 xxxx 0000 0101</p>
+<p>结果为c：0000 xxxx 0000 0111 即为7。</p>
+<p>再来看一个正数和一个负数进行或操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = -<span class="number">6</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">int</span> c = a | b;</span><br><span class="line">Log.d(<span class="string">"nida"</span>, <span class="string">"c="</span> + c);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为</p>
+<blockquote>
+<p>c=-2</p>
+</blockquote>
+<p>上面已经分析了负数相关的补码知识，这里不再赘述<br>a–1111 xxxx 1111 1010(补码)<br>b–0000 xxxx 0000 0110(补码)</p>
+<p>结果为c：1111 xxxx 1111 1110  。此时为补码，我们还需要将其转换成原码。<br>c–1111 xxxx 1111 1110(补码)<br>c–1111 xxxx 1111 1101(反码)<br>c–1000 xxxx 0000 0010(原码)</p>
+<p>所以，此时c的值为-2。</p>
+<p>同理可验证-6 | -7的结果为-5。</p>
+<p>由其运算规则可知，正数和负数执行或操作，结果为负数（符号位不一样，导致或的结果为1，从而最终的计算结果为负）。</p>
+<p><strong>位异或运算符</strong></p>
+<p>位异或运算符为 ^，其运算规则是：参与运算的数字，低位对齐，高位不足的补零，如果对应的二进制位相同（同时为 0 或同时为 1）时，结果为 0；如果对应的二进制位不相同，结果则为 1。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> c = a ^ b;</span><br><span class="line">Log.d(<span class="string">"nida"</span>, <span class="string">"c="</span> + c);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为</p>
+<blockquote>
+<p>c=3</p>
+</blockquote>
+<p>变量a、b在计算机里面的存储：<br>a–0000 xxxx 0000 0110<br>b–0000 xxxx 0000 0101</p>
+<p>结果为c：0000 xxxx 0000 0011 即为3。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = -<span class="number">6</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">int</span> c = a ^ b;</span><br><span class="line">Log.d(<span class="string">"nida"</span>, <span class="string">"c="</span> + c);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<blockquote>
+<p>c=4</p>
+</blockquote>
+<p>变量a、b在计算机中的存储:<br>a–1111 xxxx 1111 1010(补码)<br>b–0000 xxxx 0000 0110(补码)</p>
+<p>结果为c：1111 xxxx 1111 1100。此为补码，将其转换为原码：<br>c–1111 xxxx 1111 1100(补码)<br>c–1111 xxxx 1111 1011(反码)<br>c–1000 xxxx 0000 0100(原码)</p>
+<p>故最终的结果为-4。</p>
+<p>同理可验证-6 ^ -7 的结果为3。</p>
+<p>由其运算规则可知，正数和负数执行异或操作，结果为负数（符号位不一样，导致异或的结果为1，从而最终的计算结果为负）。</p>
+<p><strong>位取反运算符</strong></p>
+<p>位取反运算符为 ~，其运算规则是：只对一个操作数进行运算，将操作数二进制中的 1 改为 0，0 改为 1。</p>
+<p>此比较简单，符号位也参与，所以，正数变负数，负数变正数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> c = ~a;</span><br><span class="line">Log.d(<span class="string">"nida"</span>, <span class="string">"c="</span> + c);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为</p>
+<blockquote>
+<p>c=-7</p>
+</blockquote>
+<p>变量a在计算机中的存储:<br>a–0000 xxxx 0000 0110(补码)</p>
+<p>由于变量a为正数，所以其原码、反码、补码是一样的。</p>
+<p>变量a取反之后的变量c在计算机中的存储：<br>c–1111 xxxx 1111 1001(补码)<br>c–1111 xxxx 1111 1000(反码)<br>c–1000 xxxx 0000 0111(原码)</p>
+<p>变量a在计算机中存储的时候，以补码a–0000 xxxx 0000 0110(补码)的方式存储的，针对a取反，变成了c的补码c–1111 xxxx 1111 1001(补码)，然后还原成原码就是c–1000 xxxx 0000 0111(原码)，也就是-7了。所以，一定要注意：6取反不是-6，符号位参与。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = -<span class="number">6</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">int</span> c = ~a;</span><br><span class="line">Log.d(<span class="string">"nida"</span>, <span class="string">"c="</span> + c);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为</p>
+<blockquote>
+<p>c=5</p>
+</blockquote>
+<p>同理，由于此时a为负数，其在计算机中的存储：<br>a–1111 xxxx 1111 1010(补码)</p>
+<p>变量a取反之后的变量c在计算机中的存储：<br>c–0000 xxxx 0000 0101(补码)</p>
+<p>由于负数取反之后是正数，所以其补码也就是原码，结果为5.</p>
+<p>由其运算规则可知，符号位参与过程，所以正数取反为负数，负数取反为正数，但是-a取反之后并不等于a。</p>
+<h2 id="位移运算符"><a href="#位移运算符" class="headerlink" title="位移运算符"></a>位移运算符</h2><p>位移运算符用来将操作数向某个方向（向左或者右）移动指定的二进制位数。分为左移和右移，它们都属于双目运算符。</p>
+<table>
+  <tr>
+    <td>运算符</td>
+    <td>含义</td>
+  </tr>
+  <tr>
+    <td><<</td>
+    <td>左移运算符，将运算符左边的对象向左移动运算符右边指定的位数（在低位补0）</td>
+  </tr>
+  <tr>
+    <td>>></td>
+    <td>"有符号"右移运算符，将运算符左边的对象向右移动运算符右边指定的位数。使用符号扩展机制，也就是说，如果值为正，则在高位补0，如果值为负，则在高位补1.</td>
+  </tr>
+  <tr>
+    <td>>>></td>
+    <td>"无符号"右移运算符，将运算符左边的对象向右移动运算符右边指定的位数。采用0扩展机制，也就是说，无论值的正负，都在高位补0</td>
+  </tr>
+</table>
+
+<br>
+
+<p><strong>左移运算符</strong></p>
+<p>  左移运算符用“&lt;&lt;”表示，是将运算符左边的对象，向左移动运算符右边指定的位数，并且在低位补零。其实，向左移n 位，就相当于乘上2 的n 次方</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">short</span> a = <span class="number">0b0110000000000011</span>;</span><br><span class="line"><span class="keyword">short</span> b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">short</span> c = (<span class="keyword">short</span>)(a &lt;&lt; b);</span><br><span class="line">System.out.println(<span class="string">"a="</span> + a + <span class="string">", c="</span> + c);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<blockquote>
+<p>a=24579, c=-32756</p>
+</blockquote>
+<p>Java中，一般short为2个字节16位，此时a为24579.</p>
+<p>由于，此时a是以二进制的方式表示的，所以，其在计算机中直接被当做补码。移位是带符号位一起移的。当变量a向左移动两位之后赋予c，其在计算机中的存储为：<br>c–0b1000000000001100</p>
+<p>移位过后，其变为负数，计算机中存储的是补码，所以，还需要转换为原码<br>c–0b1000 0000 0000 1100(补码)<br>c–0b1000 0000 0000 1011(反码)<br>c–0b1111 1111 1111 0100(原码)</p>
+<p>原码0b1111 1111 1111 0100对应的数值就为<strong>-32756</strong>。注意此处，移位之后的结果是int类型的，如果不进行转换，那么下面的代码是错误的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">short</span> c = a &lt;&lt; b;</span><br></pre></td></tr></table></figure>
+
+<p>除非是有如下代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> c = a &lt;&lt; b;</span><br></pre></td></tr></table></figure>
+
+<p>但是，如果c定义为int类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">short</span> a = <span class="number">0b0110000000000011</span>;</span><br><span class="line"><span class="keyword">short</span> b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">int</span> c = a &lt;&lt; b;</span><br><span class="line">System.out.println(<span class="string">"a="</span> + a + <span class="string">", c="</span> + c);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为</p>
+<blockquote>
+<p>a=24579, c=98316</p>
+</blockquote>
+<p>因为此时int为4个字节，short的2个字节会放入其低位，从而就是正数了。98316对应的二进制为：1 1000 0000 0000 1100。有点不明白这里，为什么多了一个高位的1，变成了17位。</p>
+<p><strong>无符号右移运算符</strong></p>
+<p>右移运算符无符号用“&gt;&gt;&gt;”表示，是将运算符左边的对象向右移动运算符右边指定的位数，并且在高位补0，其实右移n 位，就相当于除上2 的n 次方。</p>
+<p><strong>带符号的右移运算符</strong></p>
+<p>带符号右移运算符用“&gt;&gt;”表示，是将运算符左边的运算对象，向右移动运算符右边指定的位数。如果是正数，在高位补零，如果是负数，则在高位补1</p>
+<p>参考</p>
+<p><a href="http://c.biancheng.net/view/784.html" title="Java位运算符" target="_blank" rel="noopener">Java位运算符</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -201,364 +353,105 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://www.ljx2010hxj.cn/2019/08/23/2019/08/Java-bit-operation/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/20/Baby/baby/" class="archive-article-date">
-  	<time datetime="2019-08-20T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-20</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/20/Baby/baby/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">叮当的日常小语</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/20/Baby/baby/">叮当的日常小语</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">nida</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/10/2019/08/Anti-intellectual/" class="archive-article-date">
-  	<time datetime="2019-08-10T07:57:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/10/2019/08/Anti-intellectual/">反智</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Daily</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/06/OpenGL/OpenGLES--Coordinate-System/" class="archive-article-date">
-  	<time datetime="2019-08-06T07:58:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/06/OpenGL/OpenGLES--Coordinate-System/">OpenGLES--坐标系</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">OpenGLES</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/01/Baby/Three_years_old/" class="archive-article-date">
-  	<time datetime="2019-08-01T10:38:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/01/Baby/Three_years_old/">Three years old</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Nida</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/26/OpenGL/OpenGL-ES-GL-TRIANGLE-STRIP/" class="archive-article-date">
-  	<time datetime="2019-07-26T13:54:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/26/OpenGL/OpenGL-ES-GL-TRIANGLE-STRIP/">OpenGL ES 三角形的绘制方式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">OpenGLES</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/08/Android/Android--Statusbar-Show-Hide/" class="archive-article-date">
-  	<time datetime="2019-07-08T06:32:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/08/Android/Android--Statusbar-Show-Hide/">Android--Statusbar的显示与隐藏</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/04/Baby-ready-to-kindergarten/" class="archive-article-date">
-  	<time datetime="2019-07-04T14:41:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/04/Baby-ready-to-kindergarten/">叮当的幼儿园报名</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Daily</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/16/start/" class="archive-article-date">
-  	<time datetime="2019-06-16T08:32:06.664Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/16/start/">新的起点</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Essay</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/24/C/C--Shift-Operator/" class="archive-article-date">
-  	<time datetime="2019-05-24T01:31:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/24/C/C--Shift-Operator/">C语言--位运算符</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -582,8 +475,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
