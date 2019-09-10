@@ -6,23 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.ljx2010hxj.cn">
-  <title>OpenGLES--坐标系 | CNK</title>
+  <title>Archives: 2019/9 | CNK</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="现在发现，貌似，我们的右手坐标系，需要将Z轴的正方向朝向屏幕才是对的，否则，坐标与实际想象的效果是相反的。 例如，坐标点[-1.0, -1.0, 0.0] ，按理，应该是位于屏幕的左下角的，实际的情况是，它位于屏幕的右下角。此时应该是左手坐标系才是正确的。 到底是坐标问题，或者设置问题，还是坐标系问题？ OpenGL ES使用的是右手坐标系，但是，手机屏幕是左手坐标系？ 如果，顶点数组里面">
-<meta name="keywords" content="OpenGLES">
-<meta property="og:type" content="article">
-<meta property="og:title" content="OpenGLES--坐标系">
-<meta property="og:url" content="https://www.ljx2010hxj.cn/2019/08/06/OpenGL/OpenGLES--Coordinate-System/index.html">
+  <meta name="description" content="无为大叔，努力有为。">
+<meta name="keywords" content="android, 移动端">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CNK">
+<meta property="og:url" content="https://www.ljx2010hxj.cn/archives/2019/09/index.html">
 <meta property="og:site_name" content="CNK">
-<meta property="og:description" content="现在发现，貌似，我们的右手坐标系，需要将Z轴的正方向朝向屏幕才是对的，否则，坐标与实际想象的效果是相反的。 例如，坐标点[-1.0, -1.0, 0.0] ，按理，应该是位于屏幕的左下角的，实际的情况是，它位于屏幕的右下角。此时应该是左手坐标系才是正确的。 到底是坐标问题，或者设置问题，还是坐标系问题？ OpenGL ES使用的是右手坐标系，但是，手机屏幕是左手坐标系？ 如果，顶点数组里面">
+<meta property="og:description" content="无为大叔，努力有为。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://www.ljx2010hxj.cn/assets/img/2019/08/opengl_es_gl_triangle_fan.jpg">
-<meta property="og:image" content="https://www.ljx2010hxj.cn/assets/img/2019/08/opengl_es_gl_triangle_strip.jpg">
-<meta property="og:updated_time" content="2019-08-07T13:56:53.431Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenGLES--坐标系">
-<meta name="twitter:description" content="现在发现，貌似，我们的右手坐标系，需要将Z轴的正方向朝向屏幕才是对的，否则，坐标与实际想象的效果是相反的。 例如，坐标点[-1.0, -1.0, 0.0] ，按理，应该是位于屏幕的左下角的，实际的情况是，它位于屏幕的右下角。此时应该是左手坐标系才是正确的。 到底是坐标问题，或者设置问题，还是坐标系问题？ OpenGL ES使用的是右手坐标系，但是，手机屏幕是左手坐标系？ 如果，顶点数组里面">
-<meta name="twitter:image" content="https://www.ljx2010hxj.cn/assets/img/2019/08/opengl_es_gl_triangle_fan.jpg">
+<meta name="twitter:title" content="CNK">
+<meta name="twitter:description" content="无为大叔，努力有为。">
   
     <link rel="alternative" href="/atom.xml" title="CNK" type="application/atom+xml">
   
@@ -164,207 +160,136 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-OpenGL/OpenGLES--Coordinate-System" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      OpenGLES--坐标系
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/09/10/Baby/baby/" class="archive-article-date">
+  	<time datetime="2019-09-10T14:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/09/10/Baby/baby/">叮当的日常小语</a>
     </h1>
   
 
-        
-        <a href="/2019/08/06/OpenGL/OpenGLES--Coordinate-System/" class="archive-article-date">
-  	<time datetime="2019-08-06T07:58:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!--2019/8/6 15:58:55-->
-
-
-
-<p>现在发现，貌似，我们的右手坐标系，需要将Z轴的正方向朝向屏幕才是对的，否则，坐标与实际想象的效果是相反的。</p>
-<p>例如，坐标点[-1.0, -1.0, 0.0] ，按理，应该是位于屏幕的左下角的，实际的情况是，它位于屏幕的右下角。此时应该是左手坐标系才是正确的。</p>
-<p>到底是坐标问题，或者设置问题，还是坐标系问题？</p>
-<p>OpenGL ES使用的是右手坐标系，但是，手机屏幕是左手坐标系？</p>
-<p>如果，顶点数组里面，坐标是按照顺时针顺序，那么，OpenGL里面，默认逆时针绘制的时候，会产生怎样的结果呢？对于点和线来说，顶点坐标的顺序是无关的，不区分顺时针还是逆时针，但是，对于三角形是有关的。</p>
-<a id="more"></a>
-
-<p>看一个利用三角形绘制多边形的例子</p>
-<p>顶点坐标</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span>[] vertexCoordinates = &#123;</span><br><span class="line">        <span class="number">0.2f</span>, <span class="number">0.2f</span>, <span class="comment">//v0</span></span><br><span class="line">        -<span class="number">0.5f</span>, <span class="number">0.4f</span>, <span class="comment">//v1</span></span><br><span class="line">        -<span class="number">0.8f</span>, -<span class="number">0.3f</span>, <span class="comment">//v2</span></span><br><span class="line">        -<span class="number">0.3f</span>, -<span class="number">0.8f</span>, <span class="comment">//v3</span></span><br><span class="line">        <span class="number">0.5f</span>, -<span class="number">0.7f</span>, <span class="comment">//v4</span></span><br><span class="line">        <span class="number">0.6f</span>, -<span class="number">0.2f</span> <span class="comment">//v5</span></span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<p><strong><em>GL_TRIANGLE_FAN</em></strong></p>
-<p>使用此种绘制三角形的方式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GLES20.glDrawArrays(GLES20.GL_TRIANGLE_FAN, <span class="number">0</span>, <span class="number">6</span>);</span><br></pre></td></tr></table></figure>
-
-<p>图形如下</p>
-<div class="custom_img" align="center">
-    <img src="/assets/img/2019/08/opengl_es_gl_triangle_fan.jpg">
-    <p>使用GL_TRIANGLE_FAN绘制多边形</p>
-</div>
-
-<p><strong><em>GL_TRIANGLE_STRIP</em></strong></p>
-<p>使用此种绘制三角形的方式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, <span class="number">0</span>, <span class="number">6</span>);</span><br></pre></td></tr></table></figure>
-
-<p>图形如下</p>
-<div class="custom_img" align="center">
-    <img src="/assets/img/2019/08/opengl_es_gl_triangle_strip.jpg">
-    <p>使用GL_TRIANGLE_FAN绘制多边形</p>
-</div>
-
-<p>此种绘制方式，从设置的起始位置开始，此处是position为0，也就是从第一个坐标v0开始，最后一个坐标结束，此处为v5.</p>
-<p>绘制顺序为：v0,v2,v1 然后 v1, v3, v2, 然后v2,v4,v3,   最后v4,v3,v5。最开始的是v0，最后是v5.</p>
-<p>默认是逆时针，那么如果此时使用顺时针呢？</p>
-<ol>
-<li>顶点数组坐标顺序与绘制方向关系；</li>
-<li>坐标系方向；</li>
-<li>三角形绘制的进一步讨论。</li>
-</ol>
-<h2 id="绘制代码"><a href="#绘制代码" class="headerlink" title="绘制代码"></a>绘制代码</h2><p><strong>DrawShape.java</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DrawShape</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = DrawShape.class.getSimpleName();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> FloatBuffer vertexBuffer;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String vertexShaderCode =</span><br><span class="line">            <span class="comment">// This matrix member variable provides a hook to manipulate</span></span><br><span class="line">            <span class="comment">// the coordinates of the objects that use this vertex shader</span></span><br><span class="line">            <span class="string">"uniform mat4 uMVPMatrix;"</span> +</span><br><span class="line">                    <span class="string">"attribute vec4 vPosition;"</span> +</span><br><span class="line">                    <span class="string">"void main() &#123;"</span> +</span><br><span class="line">                    <span class="comment">// the matrix must be included as a modifier of gl_Position</span></span><br><span class="line">                    <span class="comment">// Note that the uMVPMatrix factor *must be first* in order</span></span><br><span class="line">                    <span class="comment">// for the matrix multiplication product to be correct.</span></span><br><span class="line">                    <span class="string">"  gl_Position = uMVPMatrix * vPosition;"</span> +</span><br><span class="line">                    <span class="string">"&#125;"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String fragmentShaderCode =</span><br><span class="line">            <span class="string">"precision mediump float;"</span> +</span><br><span class="line">                    <span class="string">"uniform vec4 vColor;"</span> +</span><br><span class="line">                    <span class="string">"void main() &#123;"</span> +</span><br><span class="line">                    <span class="string">"  gl_FragColor = vColor;"</span> +</span><br><span class="line">                    <span class="string">"&#125;"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span>[] vertexCoordinates = &#123;</span><br><span class="line">            <span class="number">0.2f</span>, <span class="number">0.2f</span>, <span class="comment">//v0</span></span><br><span class="line">            -<span class="number">0.5f</span>, <span class="number">0.4f</span>, <span class="comment">//v1</span></span><br><span class="line">            -<span class="number">0.8f</span>, -<span class="number">0.3f</span>, <span class="comment">//v2</span></span><br><span class="line">            -<span class="number">0.3f</span>, -<span class="number">0.8f</span>, <span class="comment">//v3</span></span><br><span class="line">            <span class="number">0.5f</span>, -<span class="number">0.7f</span>, <span class="comment">//v4</span></span><br><span class="line">            <span class="number">0.6f</span>, -<span class="number">0.2f</span> <span class="comment">//v5</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> type = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> COORS_PER_VERTEX = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> vertexCount = vertexCoordinates.length / COORS_PER_VERTEX;</span><br><span class="line">    <span class="comment">//float is 4 bytes</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> vertexStride = COORS_PER_VERTEX * <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Set color with red, green, blue and alpha (opacity) values</span></span><br><span class="line">    <span class="comment">//It is black</span></span><br><span class="line">    <span class="keyword">float</span> color[] = &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1.0f</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> mProgram;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DrawShape</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//initialize vertex byte buffer for shape coordinates.</span></span><br><span class="line">        <span class="comment">// (number of coordinate values * 4 bytes per float)</span></span><br><span class="line">        <span class="comment">//If use ByteBuffer.allocate, will throw a exception</span></span><br><span class="line">        <span class="comment">//java.lang.IllegalArgumentException: Must use a native order direct Buffer</span></span><br><span class="line">        ByteBuffer bb = ByteBuffer.allocateDirect(vertexCoordinates.length * <span class="number">4</span>);</span><br><span class="line">        <span class="comment">//use the device hardware's  native byte order.</span></span><br><span class="line">        bb.order(ByteOrder.nativeOrder());</span><br><span class="line">        <span class="comment">//create a floating point buffer from the ByteBuffer</span></span><br><span class="line">        vertexBuffer = bb.asFloatBuffer();</span><br><span class="line">        <span class="comment">//add the coordinates to the FloatBuffer</span></span><br><span class="line">        vertexBuffer.put(vertexCoordinates);</span><br><span class="line">        <span class="comment">//set the buffer to read the first coordinate</span></span><br><span class="line">        vertexBuffer.position(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> vertexShader = DrawRender.loadShader(GLES20.GL_VERTEX_SHADER, vertexShaderCode);</span><br><span class="line">        <span class="keyword">int</span> fragmentShader = DrawRender.loadShader(GLES20.GL_FRAGMENT_SHADER, fragmentShaderCode);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// create empty OpenGL ES Program</span></span><br><span class="line">        mProgram = GLES20.glCreateProgram();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// add the vertex shader to program</span></span><br><span class="line">        GLES20.glAttachShader(mProgram, vertexShader);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// add the fragment shader to program</span></span><br><span class="line">        GLES20.glAttachShader(mProgram, fragmentShader);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// creates OpenGL ES program executables</span></span><br><span class="line">        GLES20.glLinkProgram(mProgram);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(<span class="keyword">float</span> vPmatrix[])</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Add program to OpenGL ES environment</span></span><br><span class="line">        GLES20.glUseProgram(mProgram);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// get handle to vertex shader's vPosition member</span></span><br><span class="line">        <span class="keyword">int</span> positionHandle = GLES20.glGetAttribLocation(mProgram, <span class="string">"vPosition"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Enable a handle to the triangle vertices</span></span><br><span class="line">        GLES20.glEnableVertexAttribArray(positionHandle);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Prepare the triangle coordinate data</span></span><br><span class="line">        <span class="comment">//GLES20.glVertexAttribPointer(positionHandle, COORS_PER_VERTEX,</span></span><br><span class="line">        <span class="comment">//        GLES20.GL_FLOAT, false,</span></span><br><span class="line">        <span class="comment">//        vertexStride, vertexBuffer);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//Draw point</span></span><br><span class="line">        <span class="comment">//GLES20.glVertexAttribPointer(positionHandle, 2, GLES20.GL_FLOAT, false, 8, vertexBuffer);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//Draw line</span></span><br><span class="line">        GLES20.glVertexAttribPointer(positionHandle, <span class="number">2</span>, GLES20.GL_FLOAT, <span class="keyword">false</span>, <span class="number">8</span>, vertexBuffer);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// get handle to shape's transformation matrix</span></span><br><span class="line">        <span class="keyword">int</span> vPMatrixHandle = GLES20.glGetUniformLocation(mProgram, <span class="string">"uMVPMatrix"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Pass the projection and view transformation to the shader</span></span><br><span class="line">        GLES20.glUniformMatrix4fv(vPMatrixHandle, <span class="number">1</span>, <span class="keyword">false</span>, vPmatrix, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// get handle to fragment shader's vColor member</span></span><br><span class="line">        <span class="keyword">int</span> colorHandle = GLES20.glGetUniformLocation(mProgram, <span class="string">"vColor"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Set color for drawing the triangle</span></span><br><span class="line">        GLES20.glUniform4fv(colorHandle, <span class="number">1</span>, color, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Draw the triangle</span></span><br><span class="line">        <span class="comment">//GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, vertexCount);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//Draw the point</span></span><br><span class="line">        <span class="comment">//GLES20.glDrawArrays(GLES20.GL_POINTS, 0, 9);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//Draw line segment</span></span><br><span class="line">        GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, <span class="number">0</span>, <span class="number">6</span>);</span><br><span class="line">        <span class="comment">//the order :v0,v2, v1    v1, v3, v2,   v2,v4,v3,   v4,v3,v5</span></span><br><span class="line">        <span class="comment">//start from v0, end with v5.</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Disable vertex array</span></span><br><span class="line">        GLES20.glDisableVertexAttribArray(positionHandle);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<p><strong>DrawRender.java</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DrawRender</span> <span class="keyword">implements</span> <span class="title">GLSurfaceView</span>.<span class="title">Renderer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = DrawRender.class.getSimpleName();</span><br><span class="line">    <span class="comment">//This matrix is a result to combine viewMatrix and projectionMatrix, 4x4</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> vPMatrix[] = <span class="keyword">new</span> <span class="keyword">float</span>[<span class="number">16</span>];</span><br><span class="line">    <span class="comment">//Camera view matrix 4x4</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> viewMatrix[] = <span class="keyword">new</span> <span class="keyword">float</span>[<span class="number">16</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> projectionMatrix[] = <span class="keyword">new</span> <span class="keyword">float</span>[<span class="number">16</span>];</span><br><span class="line">    <span class="keyword">private</span> DrawShape mShape;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSurfaceCreated</span><span class="params">(GL10 gl, EGLConfig config)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//Draw white background</span></span><br><span class="line">        GLES20.glClearColor(<span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>, <span class="number">1.0f</span>);</span><br><span class="line"></span><br><span class="line">        mShape = <span class="keyword">new</span> DrawShape();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSurfaceChanged</span><span class="params">(GL10 gl, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//Set original point, the coordinate [0, 0]</span></span><br><span class="line">        GLES20.glViewport(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">float</span> ratio = width &gt; height ? (<span class="keyword">float</span>) width / height : (<span class="keyword">float</span>) height / width;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// this projection matrix is applied to object coordinates</span></span><br><span class="line">        <span class="comment">// in the onDrawFrame() method</span></span><br><span class="line">        <span class="keyword">if</span> (width &gt; height) &#123;</span><br><span class="line">            Matrix.frustumM(projectionMatrix, <span class="number">0</span>, -ratio, ratio, -<span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">7</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            Matrix.frustumM(projectionMatrix, <span class="number">0</span>, -<span class="number">1.0f</span>, <span class="number">1.0f</span>, -ratio, ratio, <span class="number">3</span>, <span class="number">7</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Set the camera position (View matrix)</span></span><br><span class="line">        <span class="comment">//an eye point [0, 0, -3], a center of view [0, 0, 0], an up vector [0, 1.0, 0]</span></span><br><span class="line">        Matrix.setLookAtM(viewMatrix, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, -<span class="number">3</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1.0f</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDrawFrame</span><span class="params">(GL10 gl)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//Must redraw background, otherwise, it will has a default black background.</span></span><br><span class="line">        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);</span><br><span class="line">        <span class="comment">// Calculate the projection and view transformation,combine projectionMatrix and viewMatrix</span></span><br><span class="line">        <span class="comment">//lhs = left-hand-side matrix  rhs = right-hand-side matrix</span></span><br><span class="line">        Matrix.multiplyMM(vPMatrix, <span class="number">0</span>, projectionMatrix, <span class="number">0</span>, viewMatrix, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        mShape.draw(vPMatrix);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">loadShader</span><span class="params">(<span class="keyword">int</span> type, String shaderCode)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// create a vertex shader type (GLES20.GL_VERTEX_SHADER)</span></span><br><span class="line">        <span class="comment">// or a fragment shader type (GLES20.GL_FRAGMENT_SHADER)</span></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> shaderObjectId = GLES20.glCreateShader(type);</span><br><span class="line">        <span class="keyword">if</span> (shaderObjectId == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (Constant.DEBUG) &#123;</span><br><span class="line">                Log.d(TAG, <span class="string">"Can't create shader type:"</span> + type + <span class="string">", shaderCode:"</span> + shaderCode);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// add the source code to shader</span></span><br><span class="line">        GLES20.glShaderSource(shaderObjectId, shaderCode);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//compile shader</span></span><br><span class="line">        GLES20.glCompileShader(shaderObjectId);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Get compiler status</span></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span>[] compileStatus = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">1</span>];</span><br><span class="line">        GLES20.glGetShaderiv(shaderObjectId, GLES20.GL_COMPILE_STATUS,</span><br><span class="line">                compileStatus, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (Constant.DEBUG) &#123;</span><br><span class="line">            Log.v(TAG, <span class="string">"code compile result:"</span> + <span class="string">"\n"</span> + shaderCode</span><br><span class="line">                    + <span class="string">"\n:"</span> + GLES20.glGetShaderInfoLog(shaderObjectId));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (compileStatus[<span class="number">0</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">//if compile failed, delete shader object</span></span><br><span class="line">            GLES20.glDeleteShader(shaderObjectId);</span><br><span class="line">            <span class="keyword">if</span> (Constant.DEBUG) &#123;</span><br><span class="line">                Log.w(TAG, <span class="string">"Compile failed type:"</span> + type + <span class="string">", shaderCode:"</span> + shaderCode);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> shaderObjectId;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">OpenGLES</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">nida</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://www.ljx2010hxj.cn/2019/08/06/OpenGL/OpenGLES--Coordinate-System/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
-  
-    <a href="/2019/08/10/2019/08/Anti-intellectual/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          反智
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/08/01/Baby/Three_years_old/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Three years old</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/09/09/2019/09/Price_risen_again/" class="archive-article-date">
+  	<time datetime="2019-09-09T06:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
+</a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
+    	 
   
-  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/09/09/2019/09/Price_risen_again/">楼下的包子又涨价了</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Daily</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/09/08/Baby/The_First_Week_In_Kindergarten/" class="archive-article-date">
+  	<time datetime="2019-09-08T14:39:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/09/08/Baby/The_First_Week_In_Kindergarten/">幼儿园的第一周</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">nida</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
   
 
-  
+    
 
 
           </div>
@@ -387,8 +312,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
